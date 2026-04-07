@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update                                                                                
-apt-get install -y openjdk-21-jre 
+apt-get install -y openjdk-17-jre 
 mkdir -p /opt/vmwatch
 curl -L https://github.com/Akobke/VMWatchAgent/releases/latest/download/vmwatchagent.jar -o /opt/vmwatch/vmwatchagent.jar
 cat > /etc/systemd/system/vmwatch-agent.service << 'EOF'
