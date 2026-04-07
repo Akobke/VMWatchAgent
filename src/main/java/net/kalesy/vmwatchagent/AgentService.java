@@ -8,7 +8,7 @@ import oshi.hardware.HardwareAbstractionLayer;
 import oshi.software.os.OSFileStore;
 import oshi.software.os.OperatingSystem;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class AgentService {
@@ -21,15 +21,16 @@ public class AgentService {
         long available = memory.getAvailable();
         return (double)(total - available) / total * 100;
     }
-    public Double getDisk(){
-        double totalSpace = 0;
-        double totalAvailable = 0;
+    public HashMap<String,Double> getDisk(){
+        HashMap<String,Double> diskList = new HashMap<String, Double>();
+
         List<OSFileStore> disks = os.getFileSystem().getFileStores();
         for(OSFileStore disk : disks){
-            totalSpace = disk.getTotalSpace() + totalSpace;
-            totalAvailable = disk.getFreeSpace() + totalAvailable;
+            double totalSpace = disk.getTotalSpace();
+            double totalAvailable = disk.getFreeSpace();
+            diskList.put(disk.getName(),(double)(totalSpace - totalAvailable) / totalSpace * 100);
         }
-        return (double)(totalSpace - totalAvailable) / totalSpace * 100;
+        return diskList;
 
     }
     public double getCpu() throws InterruptedException {

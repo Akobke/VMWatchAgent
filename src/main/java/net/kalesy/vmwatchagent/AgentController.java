@@ -4,6 +4,8 @@ package net.kalesy.vmwatchagent;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+
 @RestController
 public class AgentController {
     private final AgentService agentService;
@@ -12,7 +14,7 @@ public class AgentController {
     }
 
     @GetMapping("/metrics/disk")
-    public Double getDiskUsage() {
+    public HashMap<String, Double> getDiskUsage() {
         return agentService.getDisk();
     }
     @GetMapping("/metrics/cpu")

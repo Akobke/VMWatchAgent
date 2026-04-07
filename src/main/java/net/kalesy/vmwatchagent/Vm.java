@@ -1,10 +1,12 @@
 package net.kalesy.vmwatchagent;
 
+import java.util.HashMap;
+
 public class Vm {
 
     private double cpuUsage;
     private double memoryUsage;
-    private double diskUsage;
+    private HashMap<String, Double> diskUsage;
 
     public double getCpuUsage() {
         return cpuUsage;
@@ -22,11 +24,11 @@ public class Vm {
         this.memoryUsage = memoryUsage;
     }
 
-    public double getDiskUsage() {
+    public HashMap<String, Double> getDiskUsage() {
         return diskUsage;
     }
 
-    public void setDiskUsage(double diskUsage) {
+    public void setDiskUsage(HashMap<String,Double> diskUsage) {
         this.diskUsage = diskUsage;
     }
 }
