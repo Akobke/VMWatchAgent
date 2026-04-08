@@ -14,5 +14,6 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOF
-systemctl daemon-reload
-systemctl enable --now vmwatch-agent
+systemctl daemon-reload                                                                       
+systemctl enable vmwatch-agent                                                                
+systemctl restart vmwatch-agent  
